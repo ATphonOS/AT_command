@@ -1,52 +1,55 @@
 #include <SoftwareSerial.h>
-#include "AT_command.h"  
+#include "AT_command.h"
 
-SoftwareSerial gsmSerial(7, 8);  // RX, TX
-AT_command at(gsmSerial);      
+// Configure SoftwareSerial for the GSM module
+SoftwareSerial gsmSerial(7, 8); // RX, TX
+AT_command at(gsmSerial);
 
 void setup() {
-    Serial.begin(9600);
-    gsmSerial.begin(9600);
-    delay(1000);  
+  Serial.begin(9600);
+  gsmSerial.begin(9600);
+  delay(1000); // Wait for the module to initialize
 
-    Serial.println("=== Test de comandos AT ===");
+  Serial.println("=== AT Commands Test ===");
 
-    // Ejemplo 1: Solo enviar comando, sin leer respuesta
-    Serial.println("Ejemplo 1: Enviando comando AT sin capturar respuesta...");
-    at.sendATCommand(0, nullptr, AT_command::NONE, true, 2000, false);
-    Serial.println("Comando AT enviado.");
+  // Example 1: Send AT command without reading response
+  Serial.println("Example 1: Sending AT command without capturing response...");
+  at.sendATCommand(0, nullptr, AT_command::NONE, true, 2000, false);
+  Serial.println("AT command sent.");
 
-    // Ejemplo 2: Enviar y obtener respuesta (AT+CSDVC)
-    Serial.println("\nEjemplo 2: Enviando AT+CSDVC...");
-    const char* response = at.sendATCommand(3, nullptr, AT_command::NONE, true, 3000, true);
-    Serial.print("Resultado: ");
-    Serial.println(response);
-    at.clearStaticBuffer();
+  // Example 2: Send and get response (AT+CSDVC)
+  Serial.println("\nExample 2: Sending AT+CSDVC...");
+  const char* response = at.sendATCommand(3, nullptr, AT_command::NONE, true, 3000, true);
+  Serial.print("Result: ");
+  Serial.println(response);
+  at.clearStaticBuffer();
 
-    // Ejemplo 3: Enviar y obtener respuesta (AT+CSQ)
-    Serial.println("\nEjemplo 3: Enviando AT+CSQ...");
-    response = at.sendATCommand(5, nullptr, AT_command::NONE, true, 3000, true);
-    Serial.print("Resultado: ");
-    Serial.println(response);
-    at.clearStaticBuffer();
+  // Example 3: Send and get response (AT+CSQ)
+  Serial.println("\nExample 3: Sending AT+CSQ...");
+  response = at.sendATCommand(5, nullptr, AT_command::NONE, true, 3000, true);
+  Serial.print("Result: ");
+  Serial.println(response);
+  at.clearStaticBuffer();
 
-    // Ejemplo 4: Visualización de comandos para depuración
-    Serial.println("\nEjemplo 4: Depuración de comandos...");
-    Serial.print("TEST (AT+COPS=?): ");
-    Serial.println(at.debugATCommand(12, nullptr, AT_command::TEST, true));
-    Serial.print("PARAM (ATD=123456789): ");
-    Serial.println(at.debugATCommand(11, "123456789", AT_command::NONE, true));
-    Serial.print("QUERY (AT+COPS?): ");
-    Serial.println(at.debugATCommand(12, nullptr, AT_command::QUERY, true));
+  // Example 4: Command debugging
+  Serial.println("\nExample 4: Debugging commands...");
+  Serial.print("TEST (AT+COPS=?): ");
+  Serial.println(at.debugATCommand(12, nullptr, AT_command::TEST, true));
+  Serial.print("PARAM (ATD=123456789): ");
+  Serial.println(at.debugATCommand(11, "123456789", AT_command::NONE, true));
+  Serial.print("QUERY (AT+COPS?): ");
+  Serial.println(at.debugATCommand(12, nullptr, AT_command::QUERY, true));
 
-    // Ejemplo 5: Usar readATResponse directamente
-    Serial.println("\nEjemplo 5: Enviando AT y leyendo respuesta manualmente...");
-    at.sendATCommand(0, nullptr, AT_command::NONE, true, 2000, false); // Enviar sin leer
-    response = at.readATResponse(2000); // Leer manualmente
-    Serial.print("Resultado: ");
-    Serial.println(response);
-    at.clearStaticBuffer();
+  // Example 5: Manually read response
+  Serial.println("\nExample 5: Sending AT and manually reading response...");
+  at.sendATCommand(0, nullptr, AT_command::NONE, true, 2000, false);
+  response = at.readATResponse(2000);
+  Serial.print("Result: ");
+  Serial.println(response);
+  at.clearStaticBuffer();
 }
 
 void loop() {
+  // Empty loop
 }
+  
