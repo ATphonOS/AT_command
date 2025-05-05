@@ -1,0 +1,17 @@
+==================================
+CLASS
+==================================
+AT_command	KEYWORD1
+
+==================================
+FUNCTIONS
+==================================
+getATCommand	KEYWORD2
+clearStaticBuffer	KEYWORD2
+clearBuffer	KEYWORD2
+addModifierOrParams	KEYWORD2
+sendATCommand	KEYWORD2
+debugATCommand	KEYWORD2
+readATResponse	KEYWORD2
+
+
