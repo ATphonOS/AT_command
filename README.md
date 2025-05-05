@@ -1,4 +1,4 @@
-This documentation is also available in **[Spanish](./README_es.md)**.
+This documentation is also available in **[Spanish](./README.es.md)**.
 
 # 📶 AT_command
 ## Overview
