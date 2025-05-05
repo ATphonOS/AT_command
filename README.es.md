@@ -1,6 +1,6 @@
 Esta documentación también está disponible en **[Inglés](./README.md)**.
 
-# 🔌 AT_command
+# 📶 AT_command
 ## Resumen
 `AT_command` es una biblioteca C++ diseñada para enviar y recibir comandos AT a través de una interfaz serial en microcontroladores compatibles con Arduino para módulos GSM. Proporciona funciones para construir, enviar y leer respuestas de comandos AT, con soporte para modificadores (como consulta y prueba), parámetros, y almacenamiento en PROGMEM. 
 
